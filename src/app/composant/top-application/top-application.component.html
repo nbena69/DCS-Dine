@@ -1,1 +1,20 @@
-<p>top-application works!</p>
+<div class="container">
+  <section class="home-section">
+    <table>
+      <thead>
+      <tr>
+        <th>Client</th>
+        <th>Applications</th>
+        <th style="text-align: right">Montant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let application of getTop() | async">
+        <td>{{ application.GrandClient }}</td>
+        <td>{{ application.Application }}</td>
+        <td>{{ application.MontantTotalEuro }}€</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
