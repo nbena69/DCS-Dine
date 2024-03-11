@@ -1,0 +1,30 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url("../../../assets/img/fondEcran/fondEcran-GsbLogin.jpg");
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+}
+.menu-container {
+  text-align: center;
+  margin: 20vh auto;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  color: #333;
+  background: rgba(0, 100, 0, 0.7);
+  font-weight: bold;
+}
+
+.menu-option {
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-option:hover {
+  background-color: #ddd;
+}

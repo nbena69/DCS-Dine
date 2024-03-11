@@ -1,4 +1,4 @@
-import { Centresactivite } from './centresactivite';
+import { Centresactivite } from './Produit1';
 
 describe('Centresactivite', () => {
   it('should create an instance', () => {

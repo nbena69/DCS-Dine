@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import {AllService} from "../../service/all.service";
 import {AsyncPipe, CommonModule} from "@angular/common";
+import {MenuComponent} from "../all/menu/menu.component";
 
 @Component({
   selector: 'app-top-application',
   standalone: true,
-  imports: [
-    AsyncPipe, CommonModule
-  ],
+    imports: [
+        AsyncPipe, CommonModule, MenuComponent
+    ],
   templateUrl: './top-application.component.html',
   styleUrl: './top-application.component.css'
 })

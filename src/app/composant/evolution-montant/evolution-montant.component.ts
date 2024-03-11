@@ -11,6 +11,7 @@ import {MenuComponent} from "../all/menu/menu.component";
     AsyncPipe, CommonModule, ChartModule, MenuComponent
   ],
   template:
+    "<app-menu></app-menu>\n" +
     "<div class=\"charts\">\n" +
     "\n" +
     "  <div class=\"line\" [chart]=\"lineChart\">\n" +
@@ -21,29 +22,56 @@ import {MenuComponent} from "../all/menu/menu.component";
 })
 
 export class EvolutionMontantComponent {
+  value1: number[] = [];
+  value2: number[] = [];
+  value3: number[] = [];
+
   constructor(private all: AllService) {
     this.all.evolMontant();
+    this.updateChart();
+  }
+
+  updateChart(): void {
+    this.getEvol().subscribe((data) => {
+      for (const entry of data) {
+        const clientValue = parseFloat(entry.MontantTotalEuro);
+        if (entry.GrandClient === 'Client1') {
+          this.value1.push(clientValue);
+        } else if (entry.GrandClient === 'Client2') {
+          this.value2.push(clientValue);
+        } else if (entry.GrandClient === 'Client3') {
+          this.value3.push(clientValue);
+        }
+      }
+
+      this.lineChart.ref$.subscribe((chart) => {
+        if (chart) {
+          chart.series[0].setData(this.value1, true);
+          chart.series[1].setData(this.value2, true);
+          chart.series[2].setData(this.value3, true);
+        }
+      });
+    });
   }
 
   getEvol() {
     return this.all.appels_terminesMontantParMois;
   }
 
-  lineChart=new Chart({
+  lineChart = new Chart({
     chart: {
-      type: 'line'
+      type: 'line',
     },
     title: {
-      text: 'Evolution des montants'
+      text: 'Evolution des montants',
     },
     credits: {
-      enabled: false
+      enabled: false,
     },
     series: [
-      {
-        name: 'Euros €',
-        data: [10, 2, 3,6,9,17,20,10,5,2,16]
-      } as any
-    ]
-  })
+      { name: 'Client1', data: this.value1 } as any,
+      { name: 'Client2', data: this.value2 } as any,
+      { name: 'Client3', data: this.value3 } as any,
+    ],
+  });
 }
