@@ -13,7 +13,7 @@ import {AsyncPipe, CommonModule} from "@angular/common";
 })
 export class TopApplicationComponent {
   constructor(private all: AllService) {
-    this.all.chargerListeFrais();
+    this.all.topApp();
   }
 
   getTop() {
