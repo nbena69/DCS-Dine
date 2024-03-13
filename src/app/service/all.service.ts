@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject} from 'rxjs';
 import {TopApp} from "../metier/topApp";
 import {MontantParMois} from "../metier/MontantParMois";
 import {Produit1} from "../metier/Produit1";
-import {Produit2} from "../metier/Produit2"; // Assurez-vous d'avoir le bon chemin vers votre service GsbApi
+import {Produit2} from "../metier/Produit2";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AllService {
-  private apiUrl = 'http://localhost/benaissa/ProjetDcsApi/public/api'; // Remplacez cela par l'URL réelle de votre API Laravel
+  private apiUrl = 'http://localhost/benaissa/ProjetDcsApi/public/api';
 
   public LigneFacturation: TopApp[] = [];
   private _reponses = new BehaviorSubject<TopApp[]>([]);
